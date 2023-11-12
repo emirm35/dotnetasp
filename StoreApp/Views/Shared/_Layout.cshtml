@@ -5,19 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/all.css" />
 </head>
 
 
 
 <body>
     <nav>
-        <li>Momo</li>
+        <partial name="_Navbar" />
+        @RenderSection("_Navbar", false)
     </nav>
     @RenderBody()
     <footer>
-
+        @RenderSection("_Footer", false)
     </footer>
-
+    @await RenderSectionAsync("Scripts", required: false)
+    <script src="~/lib/jquery/jquery.js" />
 </body>
 
 
