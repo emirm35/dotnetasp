@@ -17,12 +17,20 @@
         <partial name="_Navbar" />
         @RenderSection("_Navbar", false)
     </nav>
-    @RenderBody()
+    <div class="container">
+
+
+        <main role="main" class=pb-3"">
+            @RenderBody()
+        </main>
+    </div>
     <footer>
         @RenderSection("_Footer", false)
     </footer>
+
+    <script src="~/lib/jquery/jquery.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
-    <script src="~/lib/jquery/jquery.js" />
 </body>
 
 

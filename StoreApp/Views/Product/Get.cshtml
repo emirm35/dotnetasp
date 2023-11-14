@@ -1,7 +1,19 @@
 @model Product
 
 
-<div>
+
+
+
+
+<div class="text-center mx-auto m-0">
     <h1>@Model.ProductName</h1>
     <h1>@Model.Price</h1>
+    <div class="btn-group">
+        <a class="btn btn-primary" asp-action="index">
+            <i class="fas fa-list"></i>
+            Products</a>
+        <a class="btn btn-outline-primary" asp-action="index" asp-controller="home">
+            <i class="fas fa-home"></i>
+            Home</a>
+    </div>
 </div>

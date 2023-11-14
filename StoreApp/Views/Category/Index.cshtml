@@ -1,0 +1,15 @@
+@model List<Category>
+
+<div class="list-group  text-center ">
+    <h6 class="display-6 ">
+        Categories
+    </h6>
+</div>
+<ul class="list-group     my-5">
+
+
+    @foreach (var cat in Model)
+    {
+        <li class="list-group-item  fs-5    ">@cat.CategoryName</li>
+    }
+</ul>
