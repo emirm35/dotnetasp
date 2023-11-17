@@ -15,3 +15,4 @@ C:\Users\dream\App\Services\obj\Debug\net6.0\Services.dll
 C:\Users\dream\App\Services\obj\Debug\net6.0\refint\Services.dll
 C:\Users\dream\App\Services\obj\Debug\net6.0\Services.pdb
 C:\Users\dream\App\Services\obj\Debug\net6.0\ref\Services.dll
+C:\Users\dream\App\Services\obj\Debug\net6.0\Services.sourcelink.json

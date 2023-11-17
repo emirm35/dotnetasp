@@ -13,3 +13,4 @@ C:\Users\dream\App\Repositories\obj\Debug\net6.0\Repositories.dll
 C:\Users\dream\App\Repositories\obj\Debug\net6.0\refint\Repositories.dll
 C:\Users\dream\App\Repositories\obj\Debug\net6.0\Repositories.pdb
 C:\Users\dream\App\Repositories\obj\Debug\net6.0\ref\Repositories.dll
+C:\Users\dream\App\Repositories\obj\Debug\net6.0\Repositories.sourcelink.json

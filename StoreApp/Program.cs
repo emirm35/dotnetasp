@@ -29,15 +29,32 @@ builder.Services.AddDbContext<RepositoryContext>(options =>
 var app = builder.Build();
 
 
+
+
 app.UseStaticFiles();
 app.UseRouting();
 app.UseHttpsRedirection();
 
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=index}/{id?}"
-);
+//Çoklu routing
+app.UseEndpoints(endpoints =>
+{
+
+    //Admin Area
+    endpoints.MapAreaControllerRoute(
+        name: "Admin",
+        areaName: "Admin",
+        pattern: "Admin/{controller=Dashboard}/{action=index}/{id?}"
+    );
+
+
+
+    //User
+    endpoints.MapControllerRoute(
+        name: "default",
+    pattern: "{controller=Home}/{action=index}/{id?}");
+});
+
 
 
 
