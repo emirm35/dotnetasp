@@ -1,6 +1,9 @@
 using System.Linq.Expressions;
 using System.Security.Cryptography.X509Certificates;
+using AutoMapper;
+using Entities.Dtos;
 using Entities.Models;
+using Entities.RequestParameters;
 using Repositories.Contracts;
 using Services.Contracts;
 namespace Services
@@ -11,16 +14,34 @@ namespace Services
 
         private readonly IRepositoryManager _manager;
 
-        public ProductManager(IRepositoryManager manager)
+        //readonly ifadenin değeri yalnızca 2 yerde veirlir 1 ctor 1 de field
+        private readonly IMapper _mapper;
+
+        public ProductManager(IRepositoryManager manager, IMapper mapper)
         {
             _manager = manager;
+            _mapper = mapper;
         }
 
-        public void CreateProduct(Product product)
+        public void CreateProduct(ProductDtoForInsertion productDto)
         {
+
+
+
+
+            //mapleme yapılcak dtodaki özellikler product'a aktarılcak
+            Product product = _mapper.Map<Product>(productDto);
+
+
+
+
+
             _manager.Product.Create(product);
             _manager.Save();
         }
+
+
+
 
         public void DeleteOneProduct(int id)
         {
@@ -40,6 +61,18 @@ namespace Services
             return _manager.Product.GetAllProducts(false);
         }
 
+        public IEnumerable<Product> GetAllProductsWithDetails(ProductRequestParameters p)
+        {
+            return _manager.Product.GetAllProductsWithDetails(p);
+        }
+
+        public IEnumerable<Product> GetLatestProducts(int n, bool trackChanges)
+        {
+            return _manager.Product.FindAll(trackChanges)
+            .OrderByDescending(prd => prd.ProductId)
+            .Take(n);
+        }
+
         public Product? GetOneProduct(int id, bool trackChanges)
         {
             var product = _manager.Product.GetOneProduct(id, trackChanges);
@@ -48,11 +81,30 @@ namespace Services
             return product;
         }
 
-        public void UpdateOneProduct(Product product)
+        public ProductDtoForUpdate GetOneProductForUpdate(int id, bool trackChanges)
         {
-            var entity = _manager.Product.GetOneProduct(product.ProductId, true);
-            entity.ProductName = product.ProductName;
-            entity.Price = product.Price;
+            var product = GetOneProduct(id, trackChanges);
+            var productDto = _mapper.Map<ProductDtoForUpdate>(product);
+            return productDto;
+        }
+
+        public IEnumerable<Product> GetShowcaseProducts(bool trackChanges)
+        {
+            var product = _manager.Product.GetShowcaseProducts(trackChanges);
+            return product;
+        }
+
+        public void UpdateOneProduct(ProductDtoForUpdate productDto)
+        {
+            // var entity = _manager.Product.GetOneProduct(productDto.ProductId, true);
+            // entity.ProductName = productDto.ProductName;
+            // entity.Price = productDto.Price;
+            // entity.CategoryId = productDto.CategoryId;
+
+
+
+            var entity = _mapper.Map<Product>(productDto);
+            _manager.Product.UpdateOneProduct(entity);
             _manager.Save();
         }
     }

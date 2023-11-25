@@ -1,0 +1,43 @@
+@model Order
+
+
+<div class="text-danger fs-3  my-3 " asp-validation-summary="All">
+
+</div>
+
+
+
+
+<form method="post" asp-action="Checkout">
+    <div class="from-group my-3">
+        <label asp-for="Name">Name</label>
+        <input class="form-control " asp-for="Name">
+    </div>
+    <div class="from-group my-3">
+        <label asp-for="Line1"></label>
+        <input class="form-control " asp-for="Line1">
+    </div>
+    <div class="from-group my-3">
+        <label asp-for="Line2"></label>
+        <input class="form-control " asp-for="Line2">
+    </div>
+    <div class="from-group my-3">
+        <label asp-for="City"></label>
+        <input class="form-control " asp-for="City">
+    </div>
+
+    @* End of the lines *@
+
+
+
+    <div class="from-group my-3">
+        <input asp-for="GiftWrap">
+        <label>Gift wrap your items.</label>
+    </div>
+
+    <div class="text-center ">
+        <button type="submit " class="btn btn-dark">
+            Complete Order
+        </button>
+    </div>
+</form>

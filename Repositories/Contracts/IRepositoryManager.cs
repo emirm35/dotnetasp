@@ -6,5 +6,8 @@ namespace Repositories.Contracts
         void Save();
         ICategoryRepository Category { get; }
 
+
+        IOrderRepository Order { get; }
+
     }
 }

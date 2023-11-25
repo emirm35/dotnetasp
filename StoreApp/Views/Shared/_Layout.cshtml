@@ -16,6 +16,7 @@
     <nav>
         <partial name="_Navbar" />
         @RenderSection("_Navbar", false)
+
     </nav>
     <div class="container">
 
@@ -26,11 +27,13 @@
     </div>
     <footer>
         @RenderSection("_Footer", false)
+        <partial name="_Footer" />
     </footer>
 
     <script src="~/lib/jquery/jquery.js"></script>
     <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
+
 </body>
 
 

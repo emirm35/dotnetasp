@@ -1,11 +1,26 @@
 @model IEnumerable<Category>
 
+<div class="mt-5">
+    <h6 class="lead">
+        <i class="fa fa-solid fa-bars text-secondary "></i>
+        Categories
+    </h6>
+
+
+</div>
+
+
+
+
+
 
 <div class="my-5">
     <ul class="list-group ">
         @foreach (var cat in Model)
         {
-            <li class="list-group-item ">@cat.CategoryName</li>
+            <li class="list-group-item ">
+                <a asp-action="index" asp-route-categoryId="@cat.CategoryId"> @cat.CategoryName</a>
+            </li>
         }
     </ul>
 </div>

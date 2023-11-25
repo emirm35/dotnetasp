@@ -1,0 +1,16 @@
+@page
+
+@model DemoModel
+
+
+<div class="text-center my-5">
+    <div class="display-6">Hello @HttpContext.Session.GetString("name") </div>
+
+    <form method="post" asp-page="/demo">
+        <div>
+            <input class="" name="name" />
+
+            <input type="submit" class="btn btn-dark" />
+        </div>
+    </form>
+</div>
